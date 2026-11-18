@@ -27,10 +27,15 @@ dependencies {
         implementation(project(":${it.name}"))
     }
     file("../mechanicscore-platforms/paper").listFiles()?.forEach {
+        // 1.21 modules use a paperweight remapper that cannot read Java 25 class files.
+        // This build is for Paper 26.x.
+        if (!it.name.startsWith("v26_")) return@forEach
         implementation(project(":${it.name}"))
     }
 
-    implementation(libs.commandApiShade)
+    implementation(libs.commandApiShade) {
+        isTransitive = false
+    }
 }
 
 paperPluginYaml {

@@ -5,5 +5,6 @@ plugins {
 dependencies {
     compileOnly(project(":mechanicscore-core"))
     compileOnly(libs.paper)
+    compileOnly(libs.foliaScheduler)
     compileOnly(libs.geyser)
 }

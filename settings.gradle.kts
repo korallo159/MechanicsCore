@@ -17,7 +17,11 @@ dependencyResolutionManagement {
         maven(url = "https://repo.papermc.io/repository/maven-public/") // Paper
         maven(url = "https://libraries.minecraft.net/") // Brigadier, GameProfile
         maven(url = "https://repo.extendedclip.com/content/repositories/placeholderapi/") // PlaceholderAPI
-        maven(url = "https://jitpack.io") // Vault
+        maven(url = "https://jitpack.io") { // Vault
+            content {
+                includeGroup("com.github.MilkBowl")
+            }
+        }
         maven(url = "https://maven.enginehub.org/repo/") // WorldGuard
         maven(url = "https://mvn.lumine.io/repository/maven-public/") // MythicMobs
         maven(url = "https://repo.opencollab.dev/main/") // GeyserMC
