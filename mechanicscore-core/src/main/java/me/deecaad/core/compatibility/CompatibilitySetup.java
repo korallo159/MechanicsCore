@@ -18,10 +18,11 @@ public class CompatibilitySetup {
      */
     public String getVersionAsString() {
         String version = MinecraftVersions.getCurrent().toProtocolString();
-        // FoliaScheduler 0.8 marks drops it does not know (26.3) with protocol -1,
-        // which is not a legal class name. Those builds use the R1 compatibility class.
-        if (version.endsWith("_R-1")) {
-            return version.substring(0, version.length() - 3) + "1";
+        // FoliaScheduler 0.8 marks unknown drops (26.3) as v26_3_R-1.
+        // That is not a class name. Use the R1 compatibility class.
+        int unknown = version.indexOf("_R-");
+        if (unknown >= 0) {
+            return version.substring(0, unknown) + "_R1";
         }
         return version;
     }
